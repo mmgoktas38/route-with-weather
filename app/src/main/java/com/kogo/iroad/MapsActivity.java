@@ -207,6 +207,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         initPlacesSDK();
 
         binding.imageViewChange.setOnClickListener(view -> {
+            if (startLatLngFromEdittext == null && myLocationltlng != null){
+                startLatLngFromEdittext = myLocationltlng;
+            }
             String newFromPlaceName = binding.editTextTo.getText().toString();
             String newToPlaceName = binding.editTextFrom.getText().toString();
             binding.editTextFrom.setText(newFromPlaceName);
@@ -214,6 +217,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             tempLatLng = startLatLngFromEdittext;
             startLatLngFromEdittext = endLatLngToEdittext;
             endLatLngToEdittext = tempLatLng;
+
+
         });
 
         binding.editTextFrom.setFocusable(false);
@@ -346,6 +351,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             countsTimesOfEnteredGetWeatherDetails = 0;
             sum = 0;
             tagPolyline = null;
+            Log.e("startLatLngFromEdittext", String.valueOf(startLatLngFromEdittext));
+            Log.e("endLatLngToEdittext", String.valueOf(endLatLngToEdittext));
+            Log.e("myLocationltlng", String.valueOf(myLocationltlng));
             if (fromLatLng == null && toLatLng == null) {
                 Toast.makeText(MapsActivity.this, "Please fill in the blank area!", Toast.LENGTH_SHORT).show();
             }
@@ -486,7 +494,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         ActivityCompat.requestPermissions(MapsActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_CODE);
 
+        Log.e("burda","burda");
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            Log.e("burda","burda1");
             return;
         }
 
