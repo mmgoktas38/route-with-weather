@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutB"
+        android:layout_width="340dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/onlyframe"
+        map:layout_constraintEnd_toEndOf="@+id/constraintLayoutA"
+        map:layout_constraintStart_toStartOf="@+id/constraintLayoutA"
+        map:layout_constraintTop_toBottomOf="@+id/constraintLayoutA">
+
+        <TextView
+            android:id="@+id/textViewB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="B"
+            android:textColor="#4A4A4A"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            map:layout_constraintBottom_toBottomOf="parent"
+            map:layout_constraintStart_toStartOf="parent"
+            map:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/viewB"
+            android:layout_width="1dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="24.5dp"
+            android:background="#4DFFFFFF"
+            map:layout_constraintBottom_toBottomOf="parent"
+            map:layout_constraintStart_toEndOf="@+id/textViewB"
+            map:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextTo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="#00FFFFFF"
+            android:cursorVisible="false"
+            android:hint="To"
+            android:inputType="textPersonName"
+            android:paddingLeft="26.5dp"
+            android:textColor="#A8FFFFFF"
+            android:textColorHint="#6BFFFFFF"
+            map:layout_constraintBottom_toBottomOf="parent"
+            map:layout_constraintEnd_toEndOf="parent"
+            map:layout_constraintHorizontal_bias="0.5"
+            map:layout_constraintStart_toEndOf="@+id/viewB"
+            map:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="18dp"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/buttonGo"
+        tools:context=".MapsActivity" />
+
+    <Button
+        android:id="@+id/buttonGo"
+        android:layout_width="100dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/button_frame"
+        android:fontFamily="@font/quicksand_medium"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="Go"
+        android:textAllCaps="false"
+        android:textColor="#99FC9C14"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintHorizontal_bias="0.498"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:backgroundTint="#6BFC9C14"
+        tools:ignore="TouchTargetSizeCheck" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayoutA"
+        android:layout_width="340dp"
+        android:layout_height="65dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="12dp"
+        android:translationZ="90dp"
+        android:background="@drawable/onlyframe"
+        map:layout_constraintEnd_toStartOf="@+id/imageViewChange"
+        map:layout_constraintHorizontal_bias="0.5"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textViewA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="26dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="A"
+            android:textColor="#4A4A4A"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            map:layout_constraintBottom_toBottomOf="parent"
+            map:layout_constraintStart_toStartOf="parent"
+            map:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/viewA"
+            android:layout_width="1dp"
+            android:layout_height="37dp"
+            android:layout_marginStart="24.5dp"
+            android:background="#4DFFFFFF"
+            map:layout_constraintBottom_toBottomOf="parent"
+            map:layout_constraintStart_toEndOf="@+id/textViewA"
+            map:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextFrom"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:backgroundTint="#00FFFFFF"
+            android:cursorVisible="false"
+            android:hint="From"
+            android:inputType="textPersonName"
+            android:paddingLeft="26.5dp"
+            android:textColor="#A8FFFFFF"
+            android:textColorHint="#6BFFFFFF"
+            map:layout_constraintBottom_toBottomOf="parent"
+            map:layout_constraintEnd_toEndOf="parent"
+            map:layout_constraintHorizontal_bias="0.5"
+            map:layout_constraintStart_toEndOf="@+id/viewA"
+            map:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageViewChange"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@drawable/change"
+        map:layout_constraintBottom_toBottomOf="@+id/constraintLayoutB"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintHorizontal_bias="0.5"
+        map:layout_constraintStart_toEndOf="@+id/constraintLayoutA"
+        map:layout_constraintTop_toTopOf="@+id/constraintLayoutA"
+       />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="6dp"
+        android:fontFamily="@font/quicksand_medium"
+        android:text="Destination Time :"
+        android:textColor="#7C7B7B"
+        map:layout_constraintBottom_toBottomOf="@+id/textViewDepartureTime"
+        map:layout_constraintEnd_toStartOf="@+id/textViewDestinationTime"
+        map:layout_constraintTop_toTopOf="@+id/textViewDepartureTime" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/quicksand_medium"
+        android:text="Departure Time :"
+        android:textColor="#7C7B7B"
+        map:layout_constraintStart_toStartOf="@+id/constraintLayoutB"
+        map:layout_constraintTop_toBottomOf="@+id/constraintLayoutB" />
+
+    <TextView
+        android:id="@+id/textViewDepartureTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/quicksand_medium"
+        android:textColor="#BEBEBE"
+        android:textStyle="bold"
+        map:layout_constraintBottom_toBottomOf="@+id/textView3"
+        map:layout_constraintStart_toEndOf="@+id/textView3"
+        map:layout_constraintTop_toTopOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textViewDestinationTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        android:fontFamily="@font/quicksand_medium"
+        android:textColor="#BEBEBE"
+        android:textStyle="bold"
+        map:layout_constraintBottom_toBottomOf="@+id/textView"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintTop_toTopOf="@+id/textView" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/info_frame"
+        map:layout_constraintStart_toStartOf="parent"
+        map:layout_constraintTop_toTopOf="@+id/map">
+
+        <TextView
+            android:id="@+id/textViewDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="6dp"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="Time"
+            android:textColor="#676666"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            map:layout_constraintEnd_toEndOf="parent"
+            map:layout_constraintStart_toStartOf="parent"
+            map:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textViewDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/quicksand_medium"
+            android:text="Distance"
+            android:textColor="#676666"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            map:layout_constraintBottom_toBottomOf="parent"
+            map:layout_constraintEnd_toEndOf="parent"
+            map:layout_constraintStart_toStartOf="parent"
+            map:layout_constraintTop_toBottomOf="@+id/textViewDuration" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/buttonShowTimeline"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="26dp"
+        android:background="@drawable/button_design"
+        android:elevation="0dp"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="Show Timeline"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:visibility="invisible"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintEnd_toEndOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        tools:backgroundTint="#000000" />
+
+    <ImageView
+        android:id="@+id/buttonDirection"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginBottom="26dp"
+        android:visibility="invisible"
+        map:layout_constraintBottom_toBottomOf="parent"
+        map:layout_constraintStart_toStartOf="parent"
+        android:src="@drawable/directions" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
