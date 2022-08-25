@@ -67,6 +67,7 @@ public class TimelineActivity extends AppCompatActivity implements Serializable 
         String totalDistance = getIntent().getStringExtra("totalDistance");
         String strEndLatLon = getIntent().getStringExtra("strEndLatLon");
 
+
         Log.e("fromName",fromName);
         Log.e("toName",toName);
 

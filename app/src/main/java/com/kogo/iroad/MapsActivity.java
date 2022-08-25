@@ -307,6 +307,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             if (fromName == null) {
                 fromName = "Current Location";
             }
+            if (toName == null){
+                toName = "Current Location";
+            }
             intent.putExtra("fromName", fromName);
             intent.putExtra("toName", toName);
             intent.putExtra("startTime", startTime);
