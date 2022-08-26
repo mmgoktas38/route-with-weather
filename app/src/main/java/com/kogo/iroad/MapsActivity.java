@@ -198,7 +198,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //request location permission
         requestPermision();
-
+        Log.e("denemeee","denemeee");
         //init google map fragment to show map.
         SupportMapFragment mapFragment = (SupportMapFragment)
                 getSupportFragmentManager().findFragmentById(R.id.map);
@@ -447,7 +447,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             mMap.setMyLocationEnabled(true);
-
             fusedLocationProviderClient.getLastLocation()
                     .addOnSuccessListener(new OnSuccessListener<Location>() {
                         @Override
@@ -497,10 +496,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         ActivityCompat.requestPermissions(MapsActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_CODE);
 
-        Log.e("burda","burda");
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            Log.e("burda","burda1");
             return;
         }
 
