@@ -182,6 +182,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     ArrayList<String> orderedLatLonList = new ArrayList<>();
 
     private Dialog dialog;  // for not found any routes
+    private Dialog dialogForPermission;
     FusedLocationProviderClient fusedLocationProviderClient;   // to get current location
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -194,6 +195,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO); // dark mode cancel
         dialog = new Dialog(MapsActivity.this);         // yol bulunamadıysa kullanıldı
+        dialogForPermission = new Dialog(MapsActivity.this);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);        // kendi konumunu bulmak için tanımlandı
 
         //request location permission
@@ -420,9 +422,37 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     // konum izni alıyor
     private void requestPermision() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            Log.e("burda","burda");
             locationPermission = true;
         } else {    // eğer izin vermediyse izin iste
-            ActivityCompat.requestPermissions(MapsActivity.this,  new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_CODE);
+            dialogForPermission.setContentView(R.layout.permission1);
+            dialogForPermission.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            Button buttonOkPasswordInfo=dialogForPermission.findViewById(R.id.buttonOkPasswordInfo);
+            Button buttonOkPasswordInfoCancel=dialogForPermission.findViewById(R.id.buttonOkPasswordInfoCancel);
+            dialogForPermission.setCanceledOnTouchOutside(true);
+
+            buttonOkPasswordInfo.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    ActivityCompat.requestPermissions(MapsActivity.this,  new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, REQUEST_CODE);
+                    dialogForPermission.dismiss();
+
+                }
+            });
+            buttonOkPasswordInfoCancel.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    dialogForPermission.dismiss();
+
+                }
+            });
+
+            dialogForPermission.show();
+            Log.e("burda","burda1");
         }
     }
 
@@ -433,10 +463,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         if (requestCode == REQUEST_CODE){
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Log.e("burda","burda2");
                 locationPermission = true;
                 getLastLocation();
             }
             else {
+                Log.e("burda","burda3");
                 Toast.makeText(MapsActivity.this,"Please provide the required permission",Toast.LENGTH_SHORT).show();
             }
         }
@@ -494,12 +526,41 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     // izin verilmemişse sor
     private void askPermission() {
 
-        ActivityCompat.requestPermissions(MapsActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_CODE);
 
 
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return;
-        }
+        dialogForPermission.setContentView(R.layout.permission1);
+        dialogForPermission.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        Button buttonOkPasswordInfo=dialogForPermission.findViewById(R.id.buttonOkPasswordInfo);
+        Button buttonOkPasswordInfoCancel=dialogForPermission.findViewById(R.id.buttonOkPasswordInfoCancel);
+        dialogForPermission.setCanceledOnTouchOutside(true);
+
+        buttonOkPasswordInfo.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+
+                if (ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MapsActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    Log.e("burda5","burda5");
+                       ActivityCompat.requestPermissions(MapsActivity.this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_CODE);
+                       Log.e("burda4","burda4");
+                }
+                dialogForPermission.dismiss();
+
+            }
+        });
+        buttonOkPasswordInfoCancel.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                dialogForPermission.dismiss();
+
+            }
+        });
+
+        dialogForPermission.show();
+
 
     }
 
@@ -1293,7 +1354,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         String temporaryUrl = "";
 
         String mainUrl = "https://api.weatherapi.com/v1/forecast.json?key=";
-        String weatherApiKey = "fa1fd96defb94768ac270319221208";
+        String weatherApiKey = "72a98768f162479cb79133207222605";
 
 
         temporaryUrl = mainUrl + weatherApiKey + "&q=" + latlon + "&days=2&aqi=no&alerts=no" ;
@@ -1401,7 +1462,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     Toast.makeText(getApplicationContext(),"Please Check Internet Connection", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                 }else{
-                    Toast.makeText(getApplicationContext(),"Please Enter Correct City Name", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                 }
             }
